@@ -50,6 +50,7 @@ const controlIcons = [
 
 export const renderTasks = (project) => {
   const tasksList = document.getElementById("tasks-list");
+  tasksList.innerHTML = "";
   project.tasks.forEach((task) => {
     const li = document.createElement("li");
     li.classList.add("todo-item");
