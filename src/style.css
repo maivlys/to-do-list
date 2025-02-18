@@ -82,9 +82,20 @@ ul#projects-list{
   display: flex;
   justify-content: center;
 }
-#projects-list li span{
+#projects-list li button{
   display: flex;
   align-items: center;
+  align-self: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 6px;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+#projects-list li p{
+  pointer-events: none;
 }
 #projects-list li svg{
   height: 24px;
@@ -92,13 +103,14 @@ ul#projects-list{
   stroke: var(--dark-grey-text);
   stroke-width: 1.5;
   transition: 0.2s;
+  pointer-events: none;
 }
-#projects-list li svg:hover{
-  scale: 1.1;
-  stroke: rgb(20, 20, 20);
+#projects-list li button:hover{
+  background-color: rgba(0, 0, 0, 0.445);
 }
-#projects-list li:hover{
+#projects-list li:hover:not(svg){
   background-color: var(--light-pink-hover);
+  scale: 1.05;
 }
 .adding-bar{
   border: yellow 1px solid;
