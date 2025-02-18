@@ -72,12 +72,30 @@ ul#projects-list{
 #projects-list li{
   list-style: none;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px 0;
+  padding: 12px 32px;
+  display: grid;
+  grid-template-columns: 1fr 30px;
   font-size: 1.2rem;
   transition: 0.2s;
+}
+#projects-list p{
+  display: flex;
+  justify-content: center;
+}
+#projects-list li span{
+  display: flex;
+  align-items: center;
+}
+#projects-list li svg{
+  height: 24px;
+  width: 24px;
+  stroke: var(--dark-grey-text);
+  stroke-width: 1.5;
+  transition: 0.2s;
+}
+#projects-list li svg:hover{
+  scale: 1.1;
+  stroke: rgb(20, 20, 20);
 }
 #projects-list li:hover{
   background-color: var(--light-pink-hover);
