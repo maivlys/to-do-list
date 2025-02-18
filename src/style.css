@@ -1,6 +1,232 @@
-/* @font-face {
-  font-family: '<MyFont>';
-  src: url('./<my-font>.ttf');
+@font-face {
+  font-family: 'AlexBrush';
+  src: url('./AlexBrush.ttf');
   font-weight: 600;
   font-style: normal;
+}
+@font-face {
+  font-family: 'Inter-Light';
+  src: url('./Inter-Light.ttf');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Inter-Regular';
+  src: url('./Inter-Regular.ttf');
+  font-weight: 600;
+  font-style: normal;
+}
+:root{
+  --dark-pink: #D971A1;
+  --light-pink: #F2C2CB;
+  --light-pink-hover: #f2c2cb83;
+  --yellow: #EEEAB2;
+  --green: #7ABFB8;
+  --green-hover: #cbdfdd;
+  --orange: #D98466;
+  --dark-grey-text: #989898;
+  --light-grey-text: #B6B6B6;
+  --grey-cnt: #EDEDED;
+  --grey-edit-btn: #BBBBBB;
+  --grey-bin-btn: #787878;
+}
+
+body{
+  /* margin: 0 240px;s ----------------------------------------*/
+  padding: 0;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.849);
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 240px 1fr;
+  font-family: 'Inter-Light';
+  font-weight: 800;
+  color: white;
+}
+header, main{
+  border: 1px blue solid;
+}
+header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1{
+  font-family: 'AlexBrush';
+  font-size: 8.5rem;
+  color: var(--dark-pink);
+  margin: 0;
+  margin-top: 48px;
+}
+main{
+  display: grid;
+  grid-template-columns:  minmax(300px, 400px) minmax(650px, auto);
+}
+#projects-container{
+  border: 1px pink solid;
+}
+ul#projects-list{
+  margin: 0;
+  padding: 0;
+}
+#projects-list li{
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 0;
+  font-size: 1.2rem;
+  transition: 0.2s;
+}
+#projects-list li:hover{
+  background-color: var(--light-pink-hover);
+}
+.adding-bar{
+  border: yellow 1px solid;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 28px 32px;
+}
+.adding-bar p{
+  color: var(--light-grey-text);
+  cursor: pointer;
+}
+.adding-bar button{
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+}
+.adding-bar svg{
+  height: 35px;
+  stroke-width: 1.5;
+  stroke: var(--dark-pink);
+  transition: 0.2s;
+}
+.adding-bar svg:hover{
+  scale: 1.1;
+}
+.adding-bar img{
+  height: 45px;
+}
+#tasks-container{
+  border: 1px solid pink;
+  display: flex;
+  flex-direction: column;
+}
+#tasks-header{
+  display: grid;
+  grid-template-columns: 1fr 250px;
+}
+#current-project{
+  border: 1px solid yellowgreen;
+  margin-left: 32px;
+  font-family: 'Inter-Regular';
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  color: var(--dark-grey-text);
+}
+#tasks-list{
+  padding: 24px 0;
+  margin:  0 32px;
+
+}
+.todo-item{
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 24px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  cursor: default;
+}
+.todo-item button,
+.todo-item div{
+  box-shadow: 1px 1px 6px white;
+}
+.todo-info,
+.due-date{
+  background-color: var(--grey-cnt);
+  height: 58px;
+  display: flex;
+  padding: 0 12px;
+  border-radius: 2px;
+}
+.todo-info{
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+.due-date{
+  align-items: center;
+  font-size: 1.3rem;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  color: var(--dark-grey-text);
+}
+.todo-info p{
+  margin: 0;
+  color: var(--dark-grey-text);
+}
+.title{
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+.todo-item button{
+  height: 58px;
+  width: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  border: none;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+.todo-item button:hover:not(.priority){
+  cursor: pointer;
+  scale: 1.1;
+}
+button.priority{
+  font-size: 2rem;
+  color: white;
+  background-color: var(--grey-cnt);
+}
+.todo-item svg{
+  height: 28px;
+  stroke-width: 1.5;
+  stroke: var(--dark-pink);
+  transition: 0.2s;
+}
+.edit-btn,
+.check-btn,
+.bin-btn{
+  background-color: var(--grey-cnt);
+}
+.check-btn:hover{
+  background-color: var(--green-hover);
+}
+/* .check-btn:active{
+  background-color: var(--green);
 } */
+.edit-btn svg{
+  stroke: var(--grey-edit-btn);
+}
+.check-btn svg{
+  stroke: var(--green);
+}
+/* .check-btn svg:active{
+stroke: white;
+} */
+.bin-btn svg{
+  stroke: var(--grey-bin-btn);
+}
+::backdrop{
+  background-color: rgba(0, 0, 0, 0.521);
+}
