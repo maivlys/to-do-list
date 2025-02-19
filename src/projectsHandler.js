@@ -44,5 +44,24 @@ export const deleteProject = (id) => {
 
 export const displayCurrentProject = (i) => {
   const projectTitle = document.querySelector("#current-project p");
-  projectTitle.textContent = allData[i].title;
+  // console.log(i);
+
+  if (i === null) {
+    projectTitle.textContent = "";
+    return;
+  } else {
+    projectTitle.textContent = allData[i].title;
+  }
 };
+
+const createID = () => {
+  let id = 2000;
+
+  return {
+    generate: function () {
+      id++;
+    },
+  };
+};
+
+export const ID = createID();

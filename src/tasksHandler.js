@@ -51,58 +51,64 @@ const controlIcons = [
 export const renderTasks = (project) => {
   const tasksList = document.getElementById("tasks-list");
   tasksList.innerHTML = "";
-  project.tasks.forEach((task) => {
-    const li = document.createElement("li");
-    li.classList.add("todo-item");
+  // console.log(project.tasks === undefined);
 
-    const priority = document.createElement("button");
-    priority.classList.add("priority");
-    switch (task.priority) {
-      case 1:
-        priority.textContent = "!";
-        priority.style.backgroundColor = "var(--yellow)";
-        break;
-      case 2:
-        priority.textContent = "!!";
-        priority.style.backgroundColor = "var(--light-pink)";
-        break;
-      case 3:
-        priority.textContent = "!!!";
-        priority.style.backgroundColor = "var(--orange)";
-        break;
-      default:
-        priority.textContent = "";
-        break;
-    }
+  if (project !== undefined) {
+    project.tasks.forEach((task) => {
+      const li = document.createElement("li");
+      li.classList.add("todo-item");
 
-    const infoCnt = document.createElement("div");
-    infoCnt.classList.add("todo-info");
+      const priority = document.createElement("button");
+      priority.classList.add("priority");
+      switch (task.priority) {
+        case 1:
+          priority.textContent = "!";
+          priority.style.backgroundColor = "var(--yellow)";
+          break;
+        case 2:
+          priority.textContent = "!!";
+          priority.style.backgroundColor = "var(--light-pink)";
+          break;
+        case 3:
+          priority.textContent = "!!!";
+          priority.style.backgroundColor = "var(--orange)";
+          break;
+        default:
+          priority.textContent = "";
+          break;
+      }
 
-    const title = document.createElement("p");
-    title.classList.add("title");
-    title.textContent = task.title;
+      const infoCnt = document.createElement("div");
+      infoCnt.classList.add("todo-info");
 
-    const descr = document.createElement("p");
-    descr.classList.add("descr");
-    descr.textContent = task.descr;
+      const title = document.createElement("p");
+      title.classList.add("title");
+      title.textContent = task.title;
 
-    infoCnt.appendChild(title);
-    infoCnt.appendChild(descr);
+      const descr = document.createElement("p");
+      descr.classList.add("descr");
+      descr.textContent = task.descr;
 
-    const dueDate = document.createElement("div");
-    dueDate.classList.add("due-date");
-    dueDate.textContent = task.dueTo;
+      infoCnt.appendChild(title);
+      infoCnt.appendChild(descr);
 
-    li.appendChild(priority);
-    li.appendChild(infoCnt);
-    li.appendChild(dueDate);
+      const dueDate = document.createElement("div");
+      dueDate.classList.add("due-date");
+      dueDate.textContent = task.dueTo;
 
-    controlIcons.forEach((icon) => {
-      const btn = document.createElement("button");
-      btn.classList.add(icon.class);
-      btn.innerHTML = icon.html;
-      li.appendChild(btn);
+      li.appendChild(priority);
+      li.appendChild(infoCnt);
+      li.appendChild(dueDate);
+
+      controlIcons.forEach((icon) => {
+        const btn = document.createElement("button");
+        btn.classList.add(icon.class);
+        btn.innerHTML = icon.html;
+        li.appendChild(btn);
+      });
+      tasksList.appendChild(li);
     });
-    tasksList.appendChild(li);
-  });
+  } else {
+    tasksList.innerHTML = "";
+  }
 };
