@@ -1,5 +1,9 @@
 import { allData } from "./dataList.js";
-import { appController } from "./appController.js";
+import {
+  addProjectAndTasksListeners,
+  saveToLocStorage,
+} from "./appController.js";
+import { textEvaluate, projectTitleEvaluate } from "./userInputModule.js";
 
 export const renderProjects = () => {
   const projectsList = document.getElementById("projects-list");
@@ -30,38 +34,83 @@ export const renderProjects = () => {
     li.appendChild(delOption);
     projectsList.appendChild(li);
   });
-  appController();
+  addProjectAndTasksListeners();
 };
 
 export const deleteProject = (id) => {
   for (let i = 0; i < allData.length; i++) {
     if (id === allData[i].id) {
       allData.splice(i, 1);
-      console.log(allData);
     }
   }
 };
 
-export const displayCurrentProject = (i) => {
+export const displayCurrentProject = (i, id) => {
   const projectTitle = document.querySelector("#current-project p");
-  // console.log(i);
+  const selector = `ul li#${id}`;
+  const clickedLi = document.querySelector(selector);
+
+  if (clickedLi !== null) {
+    clickedLi.classList.add("clicked");
+  }
 
   if (i === null) {
     projectTitle.textContent = "";
+    projectTitle.id = "";
     return;
   } else {
     projectTitle.textContent = allData[i].title;
+    projectTitle.id = id;
   }
 };
 
-const createID = () => {
-  let id = 2000;
+const createID = (() => {
+  let id = localStorage.getItem("id")
+    ? parseInt(localStorage.getItem("id"), 10)
+    : 2000;
 
   return {
     generate: function () {
       id++;
+      localStorage.setItem("id", id);
+      return id.toString();
     },
   };
-};
+})();
 
-export const ID = createID();
+export const ID = createID;
+
+class Project {
+  constructor(name, id) {
+    this.title = name;
+    this.id = id;
+    this.tasks = [];
+  }
+}
+
+export const projectName = document.getElementById("project-title-user-input");
+export const errProjectInput = document.getElementById("error-project-dialog");
+let projectTitle = "";
+
+export const addNewProject = () => {
+  projectTitle = projectName.value;
+  errProjectInput.textContent = "";
+
+  if (
+    projectTitle === "" ||
+    projectTitle === null ||
+    projectTitle.length <= 3
+  ) {
+    errProjectInput.textContent = "Insert a word longer than 3 letters";
+    return false;
+  } else {
+    const newProject = new Project(
+      projectTitleEvaluate(projectTitle),
+      `id${ID.generate()}`
+    );
+    allData.push(newProject);
+
+    renderProjects();
+    return true;
+  }
+};
