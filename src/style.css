@@ -35,16 +35,11 @@ body{
   /* margin: 0 240px;s ----------------------------------------*/
   padding: 0;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.849);
   height: 100vh;
   display: grid;
   grid-template-rows: 240px 1fr;
   font-family: 'Inter-Light';
   font-weight: 800;
-  color: white;
-}
-header, main{
-  border: 1px blue solid;
 }
 header{
   display: flex;
@@ -62,8 +57,12 @@ main{
   display: grid;
   grid-template-columns:  minmax(300px, 400px) minmax(650px, auto);
 }
+ul#projects-list,
+ul#tasks-list{
+  border-top: 1px rgb(221, 221, 221) solid;
+}
 #projects-container{
-  border: 1px pink solid;
+  border-right: 1px rgb(221, 221, 221) solid;
 }
 ul#projects-list{
   margin: 0;
@@ -96,6 +95,8 @@ ul#projects-list{
 }
 #projects-list li p{
   pointer-events: none;
+  color: var(--dark-grey-text);
+  font-family: "Inter-Regular";
 }
 #projects-list li svg{
   height: 24px;
@@ -106,7 +107,7 @@ ul#projects-list{
   pointer-events: none;
 }
 #projects-list li button:hover{
-  background-color: rgba(0, 0, 0, 0.445);
+  background-color: rgba(124, 124, 124, 0.16);
 }
 #projects-list li:hover:not(svg){
   background-color: var(--light-pink-hover);
@@ -116,7 +117,6 @@ ul#projects-list{
   background-color: var(--light-pink-hover);
 }
 .adding-bar{
-  border: yellow 1px solid;
   display: flex;
   justify-content: flex-end;
   gap: 12px;
@@ -129,7 +129,6 @@ ul#projects-list{
 .adding-bar button{
   background-color: transparent;
   border: none;
-
   cursor: pointer;
 }
 .adding-bar svg{
@@ -145,7 +144,6 @@ ul#projects-list{
   height: 45px;
 }
 #tasks-container{
-  border: 1px solid pink;
   display: flex;
   flex-direction: column;
 }
@@ -154,7 +152,6 @@ ul#projects-list{
   grid-template-columns: 1fr 250px;
 }
 #current-project{
-  border: 1px solid yellowgreen;
   margin-left: 32px;
   font-family: 'Inter-Regular';
   font-size: 1.8rem;
@@ -163,9 +160,8 @@ ul#projects-list{
   color: var(--dark-grey-text);
 }
 #tasks-list{
-  padding: 24px 0;
-  margin:  0 32px;
-
+  padding: 24px 32px;
+  margin:  0;
 }
 .todo-item{
   display: flex;
@@ -180,7 +176,7 @@ ul#projects-list{
 }
 .todo-item button,
 .todo-item div{
-  box-shadow: 1px 1px 6px white;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.247);
 }
 .todo-info,
 .due-date{
@@ -270,4 +266,7 @@ button.priority{
   margin-top: 4px;
   color: rgb(201, 23, 23);
   height: 24px;
+}
+dialog{
+  border: none;
 }
