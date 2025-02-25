@@ -24,15 +24,12 @@
             </svg>
           </button>
         </div>
-        <ul id="projects-list">
-          <!-- <li>Housework</li>
-          <li>Study</li> -->
-        </ul>
+        <ul id="projects-list"></ul>
       </setion>
       <setion id="tasks-container">
         <setion id="tasks-header">
           <div id="current-project">
-            <p>PROJECT #1</p>
+            <p id></p>
           </div>
           <div class="adding-bar">
             <p>Add a task</p>
@@ -49,15 +46,25 @@
             </button>
           </div>
         </setion>
-
         <ul id="tasks-list"></ul>
       </setion>
 
       <!-- ------------------------------------------ -->
 
+      <dialog id="add-project-dialog">
+        <p>New Project</p>
+        <form id="add-project-form" autocomplete="off">
+          <label for="project-title-user-input">Project title:</label>
+          <input type="text" id="project-title-user-input" /><br />
+          <button type="submit" id="project-submit-form-btn">Add</button>
+          <button type="reset" class="close-dialog-btn project">Close</button
+          ><br />
+          <div id="error-project-dialog"></div>
+        </form>
+      </dialog>
       <dialog id="add-task-dialog">
         <p>New Task</p>
-        <form action="submit">
+        <form id="add-task-form" autocomplete="off">
           <label for="title-user-input">Title:</label>
           <input type="text" id="title-user-input" />
           <label for="decription-user-input">Description:</label>
@@ -68,21 +75,32 @@
           <input
             type="range"
             id="priority-user-input"
-            min="1"
-            max="4"
+            min="0"
+            max="3"
             value="0"
           />
-          <button class="submit-form-btn">Add</button>
-          <button type="reset" class="close-dialog-btn task">Close</button>
+          <br />
+          <button type="submit" id="task-submit-form-btn">Add</button>
+          <button type="reset" class="close-dialog-btn task">Close</button
+          ><br />
+          <div id="error-task-dialog"></div>
         </form>
       </dialog>
-      <dialog id="add-project-dialog">
-        <p>New Project</p>
-        <form action="submit">
-          <label for="project-title-user-input">Project title:</label>
-          <input type="text" id="project-title-user-input" />
-          <button class="submit-form-btn">Add</button>
-          <button type="reset" class="close-dialog-btn project">Close</button>
+      <dialog id="change-task-dialog">
+        <p>Change a task</p>
+        <form id="change-task-form" autocomplete="off">
+          <label for="title-change">Title:</label>
+          <input type="text" id="title-change" />
+          <label for="decription-change">Description:</label>
+          <input type="text" id="decription-change" />
+          <label for="due-date-change">Due to:</label>
+          <input type="date" id="due-date-change" />
+          <label for="priority-change">Priority:</label>
+          <input type="range" id="priority-change" min="0" max="3" value="0" />
+          <br />
+          <button type="submit" id="task-change-btn">Change</button>
+          <button type="reset" id="cancel-change-btn">Cancel</button><br />
+          <div id="error-change-task-dialog"></div>
         </form>
       </dialog>
     </main>
