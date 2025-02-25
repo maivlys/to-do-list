@@ -36,5 +36,10 @@ module.exports = {
   devtool: "eval-source-map",
   devServer: {
     watchFiles: ["./src/index.html"],
+    static: "./dist",
+    hot: true, // Enable hot reloading
+    open: true,
+    port: 8080,
+    // liveReload: false,
   },
 };
