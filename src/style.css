@@ -112,6 +112,9 @@ ul#projects-list{
   background-color: var(--light-pink-hover);
   scale: 1.05;
 }
+#projects-list li.clicked{
+  background-color: var(--light-pink-hover);
+}
 .adding-bar{
   border: yellow 1px solid;
   display: flex;
@@ -242,21 +245,29 @@ button.priority{
 .check-btn:hover{
   background-color: var(--green-hover);
 }
-/* .check-btn:active{
-  background-color: var(--green);
-} */
 .edit-btn svg{
   stroke: var(--grey-edit-btn);
+  pointer-events: none;
 }
 .check-btn svg{
   stroke: var(--green);
+  pointer-events: none;
 }
-/* .check-btn svg:active{
-stroke: white;
-} */
+.check-btn svg.done{
+  stroke: white;
+  pointer-events: none;
+}
 .bin-btn svg{
   stroke: var(--grey-bin-btn);
+  pointer-events: none;
 }
 ::backdrop{
   background-color: rgba(0, 0, 0, 0.521);
+}
+#error-project-dialog,
+#error-task-dialog,
+#error-change-task-dialog{
+  margin-top: 4px;
+  color: rgb(201, 23, 23);
+  height: 24px;
 }
